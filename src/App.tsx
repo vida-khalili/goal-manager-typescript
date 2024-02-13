@@ -1,3 +1,5 @@
+import { Title } from "@mantine/core";
+
 export default function App() {
-  return <h1>Let's get started!</h1>;
+  return <Title order={1}>This is h1 title</Title>;
 }
