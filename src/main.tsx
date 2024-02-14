@@ -6,11 +6,7 @@ import "./styles/typography.css";
 // import "./styles/index.css";
 import { createTheme, MantineProvider } from "@mantine/core";
 import "@mantine/core/styles.css";
-
-const theme = createTheme({
-  fontFamily: "Poppins, sans-serif",
-  primaryColor: "cyan",
-});
+import theme from "./lib/theme.ts";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
