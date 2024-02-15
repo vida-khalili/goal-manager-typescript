@@ -1,7 +1,7 @@
 import { Button } from "@mantine/core";
-import { ReactElement } from "react";
+import { type ReactNode } from "react";
 
-const CardButton = ({ children }: { children: string | ReactElement }) => {
+const CardButton = ({ children }: { children: ReactNode }) => {
   return (
     <Button variant="subtle" px={8}>
       {children}
