@@ -40,7 +40,9 @@ const NewGoalForm = ({ handleAddGoal }: INewGoalFormProps) => {
         />
 
         <Group justify="flex-end" mt="md">
-          <Button type="submit">Submit</Button>
+          <Button type="submit" fullWidth>
+            Add
+          </Button>
         </Group>
       </form>
     </Box>

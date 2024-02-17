@@ -171,6 +171,11 @@ button {
   background: #555;
 }
 
+.mantine-List-itemLabel,
+.mantine-List-itemWrapper {
+  width: 100%;
+}
+
 @media screen and (max-width: 900px) {
   body,
   html {

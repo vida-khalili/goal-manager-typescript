@@ -12,12 +12,27 @@ interface IGoalCardProps {
 
 const GoalCard = ({ title, description, onDelete, id }: IGoalCardProps) => {
   return (
-    <Paper shadow="xs" p={"xl"}>
-      <Title order={3}>{title}</Title>
-      <Text lineClamp={4} ta={"justify"} size="sm">
+    <Paper
+      shadow="xs"
+      p={"xl"}
+      w={"100%"}
+      h={220}
+      display={"flex"}
+      style={{ flexDirection: "column" }}
+    >
+      <Title h={50} order={3}>
+        {title}
+      </Title>
+      <Text
+        lineClamp={3}
+        ta={"justify"}
+        size="sm"
+        style={{ flex: 1 }}
+        w={"100%"}
+      >
         {description}
       </Text>
-      <Group justify="space-between">
+      <Group justify="space-between" h={50}>
         <CardButton id={id}>view details</CardButton>
         <CardButton id={id}>
           <IconWriting />
