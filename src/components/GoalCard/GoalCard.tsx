@@ -1,14 +1,16 @@
-import { Stack, Title, Group, Text, Paper } from "@mantine/core";
+import { Title, Group, Text, Paper } from "@mantine/core";
 import { IconTrashXFilled } from "@tabler/icons-react";
 import { IconWriting } from "@tabler/icons-react";
 import CardButton from "../CardButton/CardButton";
 
 interface IGoalCardProps {
+  id: string;
   title: string;
   description: string;
+  onDelete: (id: string) => void;
 }
 
-const GoalCard = ({ title, description }: IGoalCardProps) => {
+const GoalCard = ({ title, description, onDelete, id }: IGoalCardProps) => {
   return (
     <Paper shadow="xs" p={"xl"}>
       <Title order={3}>{title}</Title>
@@ -16,11 +18,11 @@ const GoalCard = ({ title, description }: IGoalCardProps) => {
         {description}
       </Text>
       <Group justify="space-between">
-        <CardButton>view details</CardButton>
-        <CardButton>
+        <CardButton id={id}>view details</CardButton>
+        <CardButton id={id}>
           <IconWriting />
         </CardButton>
-        <CardButton>
+        <CardButton id={id} handleClick={onDelete}>
           <IconTrashXFilled color="red" />
         </CardButton>
       </Group>
