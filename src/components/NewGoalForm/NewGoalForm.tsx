@@ -27,12 +27,14 @@ const NewGoalForm = ({ handleAddGoal }: INewGoalFormProps) => {
         })}
       >
         <TextInput
+          h={85}
           withAsterisk
           label="Your Goal"
           placeholder="your Goal Title..."
           {...form.getInputProps("title")}
         />
         <TextInput
+          h={85}
           withAsterisk
           label="Goal Summary"
           placeholder="your Goal Title..."
