@@ -1,9 +1,8 @@
 import { useEffect, useState } from "react";
-import { Center, Container, Title } from "@mantine/core";
+import { Center, Box, Title } from "@mantine/core";
 import Header from "./components/Header/Header";
 import goalImage from "./assets/goals.jpg";
 import GoalsList from "./components/GoalsList/GoalsList";
-import NewGoalForm from "./components/NewGoalForm/NewGoalForm";
 import { v4 as uuidv4 } from "uuid";
 import InfoBox from "./components/InfoBox/InfoBox";
 
@@ -55,20 +54,26 @@ export default function App() {
     });
   };
   return (
-    <Container p={"2rem"}>
-      <Header image={{ src: goalImage, alt: "goal header image" }}>
+    <Box p={32} h={"100%"} pos={"relative"}>
+      <Header
+        image={{ src: goalImage, alt: "goal header image" }}
+        handleAddGoal={handleAddGoal}
+      ></Header>
+      <Center>
         <Title order={1} ta={"center"} tt={"capitalize"}>
-          your goals{" "}
+          Your Goals
         </Title>
-      </Header>
-      <NewGoalForm handleAddGoal={handleAddGoal} />
+      </Center>
       {goals.length === 0 && (
         <InfoBox mode="hint">
           <Center fw={"bold"}>¯\_(ツ)_/¯</Center>
           <Center>You have no goals yet</Center>
+          <Center>
+            Add some goals by clicking <strong>"Add Goal"</strong> button from
+            bottom of the screen
+          </Center>
         </InfoBox>
       )}
-
       {goals.length >= 5 && goals.length < 10 && (
         <InfoBox mode="warning" severity="low">
           <Center fw={"bold"}>ƪ(˘⌣˘)ʃ</Center>
@@ -91,6 +96,6 @@ export default function App() {
         </InfoBox>
       )}
       <GoalsList goals={goals} handleDeleteGoal={handleDeleteGoal} />
-    </Container>
+    </Box>
   );
 }

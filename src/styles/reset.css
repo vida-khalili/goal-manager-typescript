@@ -103,7 +103,9 @@ nav,
 section {
   display: block;
 }
-* {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 body,
@@ -114,7 +116,7 @@ body {
   margin: 0;
   line-height: 1.5;
   font-size: 16px;
-  background-color: #888;
+  overflow: hidden;
 }
 ol,
 ul {
@@ -146,35 +148,22 @@ a:visited {
   color: inherit;
 }
 
-button {
+/* button {
   cursor: pointer;
   border: none;
   background-color: transparent;
-}
-
-/* width */
-::-webkit-scrollbar {
-  width: 5px;
-}
-
-/* Track */
-::-webkit-scrollbar-track {
-  background: #f1f1f1;
-}
-
-/* Handle */
-::-webkit-scrollbar-thumb {
-  background: #888;
-}
-
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-  background: #555;
-}
+} */
 
 .mantine-List-itemLabel,
-.mantine-List-itemWrapper {
+.mantine-List-itemWrapper. {
   width: 100%;
+}
+
+.mantine-Drawer-body {
+  height: calc(100% - 140px);
+}
+#root {
+  height: 100%;
 }
 
 @media screen and (max-width: 900px) {

@@ -1,13 +1,6 @@
 import { createTheme, rem } from "@mantine/core";
 
 const theme = createTheme({
-  breakpoints: {
-    xs: "px",
-    sm: "600px",
-    md: "900px",
-    lg: "1200px",
-    xl: "1536px",
-  },
   primaryColor: "cyan",
   fontFamily: "Poppins, sans-serif",
   shadows: {
