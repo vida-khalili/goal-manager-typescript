@@ -15,3 +15,10 @@
 .mantine-InputWrapper-label {
   font-weight: 600;
 }
+
+@media screen and (max-width: 900px) {
+  .mantine-DonutChart-root {
+    width: 90%;
+    height: 100%;
+  }
+}

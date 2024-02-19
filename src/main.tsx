@@ -7,6 +7,7 @@ import "./styles/reset.css";
 import "./styles/typography.css";
 import "@mantine/core/styles.css";
 import "@mantine/dates/styles.css";
+import "@mantine/charts/styles.css";
 import "./styles/app.css";
 // import "./styles/index.css";
 
