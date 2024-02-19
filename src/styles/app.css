@@ -1,0 +1,17 @@
+.mantine-List-itemLabel,
+.mantine-List-itemWrapper {
+  width: 100%;
+}
+
+.mantine-Drawer-body {
+  height: calc(100% - 140px);
+  color: #0e8790;
+}
+
+.mantine-Drawer-title {
+  color: #0e8790;
+  font-weight: 800;
+}
+.mantine-InputWrapper-label {
+  font-weight: 600;
+}

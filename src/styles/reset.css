@@ -154,14 +154,6 @@ a:visited {
   background-color: transparent;
 } */
 
-.mantine-List-itemLabel,
-.mantine-List-itemWrapper. {
-  width: 100%;
-}
-
-.mantine-Drawer-body {
-  height: calc(100% - 140px);
-}
 #root {
   height: 100%;
 }

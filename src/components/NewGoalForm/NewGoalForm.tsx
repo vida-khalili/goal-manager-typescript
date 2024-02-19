@@ -12,10 +12,17 @@ import goalFormValidation from "../../lib/goalFormValidation";
 import { useState } from "react";
 import { DatePicker } from "@mantine/dates";
 
-// interface INewGoalFormProps {
-//   handleAddGoal: (title: string, summary: string) => void;
-// }
-const NewGoalForm = () => {
+interface INewGoalFormProps {
+  // onclose: () => void;
+  handleAddGoal: (
+    title: string,
+    summary: string,
+    deadline: boolean,
+    endDate: Date,
+    progress: number
+  ) => void;
+}
+const NewGoalForm = ({ handleAddGoal }: INewGoalFormProps) => {
   const [isGoalExpire, setIsGoalExpire] = useState<boolean>(false);
   const [value, setValue] = useState<Date>(new Date());
 
@@ -51,15 +58,26 @@ const NewGoalForm = () => {
 
   return (
     <form
-      style={{ display: "flex", flexDirection: "column", height: "100%" }}
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        height: "100%",
+        color: "#437C9A",
+      }}
       onSubmit={form.onSubmit((values) => {
-        console.log(values);
-
-        alert(JSON.stringify(values));
-        // const newTitle: string = values.title;
-        // const newSummary: string = values.summary;
-        // handleAddGoal(newTitle, newSummary);
-        // form.reset();
+        const newTitle: string = values.title;
+        const newSummary: string = values.summary;
+        const newDeadline: boolean = values.deadline;
+        const newEndDate: Date = values.endDateValue;
+        const newProgress: number = values.progress;
+        handleAddGoal(
+          newTitle,
+          newSummary,
+          newDeadline,
+          newEndDate,
+          newProgress
+        );
+        form.reset();
       })}
     >
       <Box flex={1} h={"100%"}>

@@ -1,6 +1,7 @@
 import { type ReactNode } from "react";
 import { Alert } from "@mantine/core";
 import { IconInfoCircle } from "@tabler/icons-react";
+import theme from "../../lib/theme";
 
 type HintBoxProps = {
   mode: "hint";
@@ -16,13 +17,16 @@ type WarningBoxProps = {
 type InfoBoxProps = HintBoxProps | WarningBoxProps;
 const InfoBox = (props: InfoBoxProps) => {
   const { children, mode } = props;
+
   if (mode === "hint") {
     return (
       <Alert
+        m="0 auto"
+        maw={600}
         mt={16}
         mb={16}
-        variant="light"
-        color="blue"
+        variant="filled"
+        color={theme.primaryColor}
         title="No Goal Found"
         icon={<IconInfoCircle />}
       >
@@ -33,11 +37,12 @@ const InfoBox = (props: InfoBoxProps) => {
   const { severity } = props;
   return (
     <Alert
+      m="0 auto"
+      maw={600}
       mt={16}
       mb={16}
-      variant="light"
-      color={severity === "high" ? "red" : "orange"}
-      title="Too Much Goals!"
+      variant="filled"
+      color={severity === "high" ? "#ca2005" : "#FF4D30"}
       icon={<IconInfoCircle />}
     >
       {children}
