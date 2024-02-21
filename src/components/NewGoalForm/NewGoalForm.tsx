@@ -11,17 +11,11 @@ import { yupResolver } from "mantine-form-yup-resolver";
 import goalFormValidation from "../../lib/goalFormValidation";
 import { useState } from "react";
 import { DatePicker } from "@mantine/dates";
+import { IHandleAddGoal } from "../../App";
 
 interface INewGoalFormProps {
   // onclose: () => void;
-  handleAddGoal: (
-    title: string,
-    summary: string,
-    deadline: boolean,
-    endDate: Date,
-    startDate: Date,
-    progress: number
-  ) => void;
+  handleAddGoal: (props: IHandleAddGoal) => void;
   onClose: () => void;
 }
 const NewGoalForm = ({ handleAddGoal, onClose }: INewGoalFormProps) => {
@@ -50,7 +44,6 @@ const NewGoalForm = ({ handleAddGoal, onClose }: INewGoalFormProps) => {
       // Set the time to the end of the day
       selectedDate.setHours(23, 59, 59, 999);
     }
-    console.log("endDate:", selectedDate);
     setValue(selectedDate);
     form.setValues({
       ...form.values,
@@ -71,17 +64,19 @@ const NewGoalForm = ({ handleAddGoal, onClose }: INewGoalFormProps) => {
         const newSummary: string = values.summary;
         const newDeadline: boolean = values.deadline;
         const newEndDate: Date = values.endDateValue;
+        const createdAt: Date = new Date();
         const startDate: Date = new Date();
         startDate.setHours(0, 0, 0, 0); // Sets the start date to the beginning of the day
         const newProgress: number = values.progress;
-        handleAddGoal(
-          newTitle,
-          newSummary,
-          newDeadline,
-          newEndDate,
-          startDate,
-          newProgress
-        );
+        handleAddGoal({
+          title: newTitle,
+          summary: newSummary,
+          deadline: newDeadline,
+          endDate: newEndDate,
+          startDate: startDate,
+          progress: newProgress,
+          createdAt: createdAt,
+        });
         form.reset();
         setIsGoalExpire(false); // Reset the checkbox state
         setValue(new Date());

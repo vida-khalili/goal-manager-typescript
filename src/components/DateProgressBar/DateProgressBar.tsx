@@ -1,48 +1,41 @@
 import React, { useState, useEffect } from "react";
-import { Progress, Tooltip } from "@mantine/core";
+import { Box, Progress, Text, Tooltip } from "@mantine/core";
 
 interface DateProgressBarProps {
   pickedDate: string;
   startDate: string;
+  mode?: "mini" | "full";
 }
 
 const DateProgressBar: React.FC<DateProgressBarProps> = ({
   pickedDate,
   startDate,
+  mode,
 }) => {
   const [progress, setProgress] = useState<number>(0);
+  const [passedDays, setPassedDays] = useState<number>(0);
+  const startTime = new Date(startDate).getTime();
+  const maxTime = new Date(pickedDate).getTime();
+  const totalDays = Math.max((maxTime - startTime) / (1000 * 3600 * 24), 1);
 
   useEffect(() => {
     const updateProgress = () => {
-      // const startTime = new Date(startDate).getTime();
-      // const maxTime = new Date(pickedDate).getTime();
-      // const today = new Date();
-      // const currentTime = today.getTime();
-
-      // const totalDays = (maxTime - startTime) / (1000 * 3600 * 24);
-      // const passedDays =
-      //   (currentTime - today.setHours(0, 0, 0, 0)) / (1000 * 3600 * 24);
-
-      // const newProgress = Number(((passedDays / totalDays) * 100).toFixed(2));
-      // setProgress(newProgress);
-      // console.log("progress: ", progress);
-      const startTime = new Date(startDate).getTime();
-      const maxTime = new Date(pickedDate).getTime();
       const today = new Date();
       const currentTime = today.getTime();
 
       // Adjusting totalDays to account for same-day duration as at least 1 day
-      const totalDays = Math.max((maxTime - startTime) / (1000 * 3600 * 24), 1);
 
       // Correct calculation for passedDays to consider current time within the day
       const passedTime = currentTime - startTime; // Time passed in milliseconds since start
-      const passedDays = Math.min(passedTime / (1000 * 3600 * 24), totalDays); // Ensuring passedDays does not exceed totalDays
-
-      const newProgress = Number(((passedDays / totalDays) * 100).toFixed(2));
+      const newPassedDays = Math.min(
+        passedTime / (1000 * 3600 * 24),
+        totalDays
+      ); // Ensuring passedDays does not exceed totalDays
+      setPassedDays(newPassedDays);
+      const newProgress = Number(
+        ((newPassedDays / totalDays) * 100).toFixed(2)
+      );
       setProgress(newProgress);
-
-      console.log("passed:", passedDays);
-      console.log("progress:", newProgress);
     };
 
     // Update progress initially
@@ -56,15 +49,34 @@ const DateProgressBar: React.FC<DateProgressBarProps> = ({
   }, [pickedDate, startDate, progress]);
 
   return (
-    <div>
-      <Progress.Root w={100}>
-        <Tooltip label="days passed">
+    <Box
+      w={"100%"}
+      h={"100%"}
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: `${mode !== "mini" ? "space-between" : "center"}`,
+        alignItems: `${mode !== "mini" ? "unset" : "center"}`,
+      }}
+    >
+      <Progress.Root
+        w={mode === "mini" ? 100 : "100%"}
+        size={mode === "mini" ? "sm" : "xl"}
+      >
+        <Tooltip label={`days passed - ${progress}%`}>
           <Progress.Section value={progress} color="cyan">
             <Progress.Label>days</Progress.Label>
           </Progress.Section>
         </Tooltip>
       </Progress.Root>
-    </div>
+      {mode === "full" && (
+        <Box>
+          <Text>total days: {Math.round(totalDays)}</Text>
+          <Text>days passed: {Math.round(passedDays)}</Text>
+          <Text>days remained: {Math.round(totalDays - passedDays)}</Text>
+        </Box>
+      )}
+    </Box>
   );
 };
 

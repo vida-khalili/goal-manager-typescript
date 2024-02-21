@@ -16,6 +16,16 @@ export interface IGoal {
   endDate: Date;
   startDate: Date;
   progress: number;
+  createdAt: Date;
+}
+export interface IHandleAddGoal {
+  title: string;
+  summary: string;
+  deadline: boolean;
+  endDate: Date;
+  startDate: Date;
+  progress: number;
+  createdAt: Date;
 }
 
 export default function App() {
@@ -30,14 +40,15 @@ export default function App() {
     }
   }, []);
 
-  const handleAddGoal = (
-    title: string,
-    summary: string,
-    deadline: boolean,
-    endDate: Date,
-    startDate: Date,
-    progress: number
-  ) => {
+  const handleAddGoal = ({
+    title,
+    summary,
+    deadline,
+    endDate,
+    startDate,
+    progress,
+    createdAt,
+  }: IHandleAddGoal) => {
     setGoals((prevGoals) => {
       const newGoal: IGoal = {
         id: uuidv4(),
@@ -47,6 +58,7 @@ export default function App() {
         endDate: endDate,
         progress: progress,
         startDate: startDate,
+        createdAt: createdAt,
       };
       const updatedGoals = [...prevGoals, newGoal];
       // Store the updated goals array in local storage

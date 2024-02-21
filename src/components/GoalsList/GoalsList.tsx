@@ -21,8 +21,6 @@ const GoalsList = ({ goals, handleDeleteGoal }: IGoalsList) => {
         }}
       >
         {goals.map((goal) => {
-          console.log("type", typeof goal.endDate);
-
           return (
             <ListItem key={goal.id} w={"100%"}>
               <GoalCard goal={goal} onDelete={handleDeleteGoal} />

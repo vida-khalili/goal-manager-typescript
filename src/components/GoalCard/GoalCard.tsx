@@ -1,11 +1,12 @@
 import { Title, Group, Text, Paper, Grid } from "@mantine/core";
 import { IconTrashXFilled } from "@tabler/icons-react";
-import { IconWriting } from "@tabler/icons-react";
 import CardButton from "../CardButton/CardButton";
 import { DonutChart } from "@mantine/charts";
 import { useMediaQuery } from "@mantine/hooks";
 import DateProgressBar from "../DateProgressBar/DateProgressBar";
 import { IGoal } from "../../App";
+import ViewDetails from "../ViewDetails/ViewDetails";
+import EditGoal from "../EditGoal/EditGoal";
 
 interface IGoalCardProps {
   goal: IGoal;
@@ -64,6 +65,7 @@ const GoalCard = ({ goal, onDelete }: IGoalCardProps) => {
           {!deadline && <Text size="sm">No dead line </Text>}
           {deadline && (
             <DateProgressBar
+              mode="mini"
               pickedDate={String(endDate)}
               startDate={String(startDate)}
             />
@@ -71,10 +73,8 @@ const GoalCard = ({ goal, onDelete }: IGoalCardProps) => {
         </Grid.Col>
       </Grid>
       <Group justify="space-between" h={30}>
-        <CardButton id={id}>view details</CardButton>
-        <CardButton id={id}>
-          <IconWriting />
-        </CardButton>
+        <ViewDetails goal={goal} />
+        <EditGoal goal={goal} />
         <CardButton id={id} handleClick={onDelete}>
           <IconTrashXFilled color="red" />
         </CardButton>

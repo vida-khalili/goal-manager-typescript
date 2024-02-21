@@ -2,16 +2,10 @@ import { Box, Button, Drawer, Image } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import NewGoalForm from "../NewGoalForm/NewGoalForm";
 import { IconCaretRight } from "@tabler/icons-react";
+import { IHandleAddGoal } from "../../App";
 
 interface IHeaderProps {
-  handleAddGoal: (
-    title: string,
-    summary: string,
-    deadline: boolean,
-    endDate: Date,
-    startDate: Date,
-    progress: number
-  ) => void;
+  handleAddGoal: (props: IHandleAddGoal) => void;
   image: { src: string; alt: string };
 }
 
