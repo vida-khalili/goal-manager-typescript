@@ -1,7 +1,8 @@
 import { type ReactNode } from "react";
-import { Alert } from "@mantine/core";
+import { Alert, Modal } from "@mantine/core";
 import { IconInfoCircle } from "@tabler/icons-react";
 import theme from "../../lib/theme";
+import { useDisclosure } from "@mantine/hooks";
 
 type HintBoxProps = {
   mode: "hint";
@@ -17,6 +18,7 @@ type WarningBoxProps = {
 type InfoBoxProps = HintBoxProps | WarningBoxProps;
 const InfoBox = (props: InfoBoxProps) => {
   const { children, mode } = props;
+  const [opened, { close }] = useDisclosure(true);
 
   if (mode === "hint") {
     return (
@@ -36,17 +38,22 @@ const InfoBox = (props: InfoBoxProps) => {
   }
   const { severity } = props;
   return (
-    <Alert
-      m="0 auto"
-      maw={600}
-      mt={16}
-      mb={16}
-      variant="filled"
-      color={severity === "high" ? "#ca2005" : "#FF4D30"}
-      icon={<IconInfoCircle />}
+    <Modal
+      opened={opened}
+      onClose={close}
+      title={
+        severity === "high"
+          ? "Can Opened , Goals Everywhere!"
+          : "Too Much Goals"
+      }
+      size={"sm"}
+      style={{ color: "white" }}
+      className={
+        severity === "high" ? "warning-modal-high" : "warning-modal-low"
+      }
     >
       {children}
-    </Alert>
+    </Modal>
   );
 };
 

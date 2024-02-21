@@ -10,9 +10,8 @@ interface IGoalsList {
 const GoalsList = ({ goals, handleDeleteGoal }: IGoalsList) => {
   const isMobile = useMediaQuery(`(max-width: 768px)`);
   return (
-    <ScrollArea h={goals.length >= 5 ? "400px" : "unset"} m={0} scrollbars="y">
+    <ScrollArea h={goals.length >= 5 ? "600px" : "unset"} m={0} scrollbars="y">
       <List
-        mt={24}
         display={"grid"}
         style={{
           gridTemplateColumns: `${isMobile ? "unset" : "1fr 1fr 1fr"}`,
@@ -22,20 +21,11 @@ const GoalsList = ({ goals, handleDeleteGoal }: IGoalsList) => {
         }}
       >
         {goals.map((goal) => {
-          const { id, title, description, deadline, endDate, progress } = goal;
-          console.log("typeof", typeof endDate);
+          console.log("type", typeof goal.endDate);
 
           return (
-            <ListItem key={id} w={"100%"}>
-              <GoalCard
-                title={title}
-                description={description}
-                id={id}
-                onDelete={handleDeleteGoal}
-                deadline={deadline}
-                endDate={String(endDate)}
-                progress={progress}
-              />
+            <ListItem key={goal.id} w={"100%"}>
+              <GoalCard goal={goal} onDelete={handleDeleteGoal} />
             </ListItem>
           );
         })}

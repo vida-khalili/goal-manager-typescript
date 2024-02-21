@@ -1,41 +1,21 @@
-import {
-  Title,
-  Group,
-  Text,
-  Paper,
-  Grid,
-  Progress,
-  Tooltip,
-} from "@mantine/core";
+import { Title, Group, Text, Paper, Grid } from "@mantine/core";
 import { IconTrashXFilled } from "@tabler/icons-react";
 import { IconWriting } from "@tabler/icons-react";
 import CardButton from "../CardButton/CardButton";
 import { DonutChart } from "@mantine/charts";
 import { useMediaQuery } from "@mantine/hooks";
-import calculateDaysDifference from "../../lib/calculateDaysDifference";
 import DateProgressBar from "../DateProgressBar/DateProgressBar";
+import { IGoal } from "../../App";
+
 interface IGoalCardProps {
-  id: string;
-  title: string;
-  description: string;
-  deadline: boolean;
-  endDate: string;
-  progress: number;
+  goal: IGoal;
   onDelete: (id: string) => void;
 }
 
-const GoalCard = ({
-  title,
-  description,
-  onDelete,
-  id,
-  deadline,
-  endDate,
-  progress,
-}: IGoalCardProps) => {
+const GoalCard = ({ goal, onDelete }: IGoalCardProps) => {
   const isMobile = useMediaQuery(`(max-width: 768px)`);
-  const dayDiff = calculateDaysDifference(endDate);
-  console.log("diff", dayDiff);
+  const { id, deadline, description, endDate, startDate, progress, title } =
+    goal;
 
   return (
     <Paper
@@ -82,7 +62,12 @@ const GoalCard = ({
             ]}
           />
           {!deadline && <Text size="sm">No dead line </Text>}
-          {deadline && <DateProgressBar pickedDate={endDate} />}
+          {deadline && (
+            <DateProgressBar
+              pickedDate={String(endDate)}
+              startDate={String(startDate)}
+            />
+          )}
         </Grid.Col>
       </Grid>
       <Group justify="space-between" h={30}>

@@ -1,5 +1,8 @@
-const calculateDaysDifference = (endDateString: string): number | null => {
-  const startDate = new Date();
+const calculateDaysDifference = (
+  startDateString: string,
+  endDateString: string
+): number | null => {
+  const startDate = new Date(startDateString);
   const endDate = new Date(endDateString);
 
   if (isNaN(startDate.getTime()) || isNaN(endDate.getTime())) {

@@ -9,6 +9,7 @@ interface IHeaderProps {
     summary: string,
     deadline: boolean,
     endDate: Date,
+    startDate: Date,
     progress: number
   ) => void;
   image: { src: string; alt: string };
@@ -32,7 +33,7 @@ const Header = ({ handleAddGoal, image }: IHeaderProps) => {
           w={"5rem"}
           h={"5rem"}
         />
-        <NewGoalForm handleAddGoal={handleAddGoal} />
+        <NewGoalForm handleAddGoal={handleAddGoal} onClose={close} />
       </Drawer>
       <Button
         onClick={open}

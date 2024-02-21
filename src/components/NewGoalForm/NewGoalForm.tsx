@@ -19,10 +19,12 @@ interface INewGoalFormProps {
     summary: string,
     deadline: boolean,
     endDate: Date,
+    startDate: Date,
     progress: number
   ) => void;
+  onClose: () => void;
 }
-const NewGoalForm = ({ handleAddGoal }: INewGoalFormProps) => {
+const NewGoalForm = ({ handleAddGoal, onClose }: INewGoalFormProps) => {
   const [isGoalExpire, setIsGoalExpire] = useState<boolean>(false);
   const [value, setValue] = useState<Date>(new Date());
 
@@ -48,7 +50,7 @@ const NewGoalForm = ({ handleAddGoal }: INewGoalFormProps) => {
       // Set the time to the end of the day
       selectedDate.setHours(23, 59, 59, 999);
     }
-
+    console.log("endDate:", selectedDate);
     setValue(selectedDate);
     form.setValues({
       ...form.values,
@@ -69,15 +71,21 @@ const NewGoalForm = ({ handleAddGoal }: INewGoalFormProps) => {
         const newSummary: string = values.summary;
         const newDeadline: boolean = values.deadline;
         const newEndDate: Date = values.endDateValue;
+        const startDate: Date = new Date();
+        startDate.setHours(0, 0, 0, 0); // Sets the start date to the beginning of the day
         const newProgress: number = values.progress;
         handleAddGoal(
           newTitle,
           newSummary,
           newDeadline,
           newEndDate,
+          startDate,
           newProgress
         );
         form.reset();
+        setIsGoalExpire(false); // Reset the checkbox state
+        setValue(new Date());
+        onClose();
       })}
     >
       <Box flex={1} h={"100%"}>

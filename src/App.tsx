@@ -7,12 +7,14 @@ import { v4 as uuidv4 } from "uuid";
 import InfoBox from "./components/InfoBox/InfoBox";
 import bgImage from "./assets/bg-coral.jpg";
 import { useMediaQuery } from "@mantine/hooks";
+
 export interface IGoal {
   id: string;
   title: string;
   description: string;
   deadline: boolean;
   endDate: Date;
+  startDate: Date;
   progress: number;
 }
 
@@ -33,6 +35,7 @@ export default function App() {
     summary: string,
     deadline: boolean,
     endDate: Date,
+    startDate: Date,
     progress: number
   ) => {
     setGoals((prevGoals) => {
@@ -43,6 +46,7 @@ export default function App() {
         deadline: deadline,
         endDate: endDate,
         progress: progress,
+        startDate: startDate,
       };
       const updatedGoals = [...prevGoals, newGoal];
       // Store the updated goals array in local storage
@@ -80,7 +84,7 @@ export default function App() {
           handleAddGoal={handleAddGoal}
         ></Header>
         <Center>
-          <Title order={1} ta={"center"} tt={"capitalize"}>
+          <Title order={1} ta={"center"} tt={"capitalize"} mb={24}>
             Your Goals
           </Title>
         </Center>
@@ -89,8 +93,9 @@ export default function App() {
             <Center fw={"bold"}>¯\_(ツ)_/¯</Center>
             <Center>You have no goals yet</Center>
             <Center style={{ flexWrap: "wrap" }}>
-              Add some goals by clicking <strong>"Add Goal"</strong> button from
-              bottom of the screen
+              Add some goals by clicking
+              <strong style={{ margin: "0 4px" }}> "Add Goal" </strong>button
+              from bottom of the screen
             </Center>
           </InfoBox>
         )}

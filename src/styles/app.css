@@ -1,3 +1,10 @@
+#root {
+  color: #045a62;
+}
+
+.mantine-List-root {
+  margin: 0 !important;
+}
 .mantine-List-itemLabel,
 .mantine-List-itemWrapper {
   width: 100%;
@@ -14,6 +21,17 @@
 }
 .mantine-InputWrapper-label {
   font-weight: 600;
+}
+
+.warning-modal-high .mantine-Modal-content,
+.warning-modal-high .mantine-Modal-content header {
+  background-color: #ca2005;
+  padding: "0 1rem 0 0";
+}
+.warning-modal-low .mantine-Modal-content,
+.warning-modal-low .mantine-Modal-content header {
+  background-color: #ff715b;
+  padding: "0 1rem 0 0";
 }
 
 @media screen and (max-width: 900px) {
