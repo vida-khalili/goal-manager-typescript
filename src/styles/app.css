@@ -34,10 +34,12 @@
   padding: "0 1rem 0 0";
 }
 
+.detail {
+  position: relative;
+}
 .recharts-responsive-container {
   min-height: 80px;
   min-width: 80px;
-  position: relative;
 }
 
 @media screen and (max-width: 900px) {
@@ -52,10 +54,10 @@
   .detail .recharts-responsive-container::after {
     content: "Practical Progress";
     position: absolute;
-    bottom: -20px;
+    bottom: 0;
     left: 0;
     right: 0;
-    font-size: 12px;
+    font-size: 10px;
     font-weight: 600;
   }
 }

@@ -38,8 +38,9 @@ const GoalDetailModal = ({
       </Text>
       <Grid>
         <Grid.Col span={6}>
-          <Box>
+          <Box h={"100%"}>
             <DonutChart
+              paddingAngle={4}
               className="detail"
               withLabelsLine
               withLabels

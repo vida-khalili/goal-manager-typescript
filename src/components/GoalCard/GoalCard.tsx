@@ -54,8 +54,8 @@ const GoalCard = ({ goal, onDelete }: IGoalCardProps) => {
           }}
         >
           <DonutChart
-            size={!isMobile ? 100 : 80}
-            thickness={!isMobile ? 15 : 15}
+            size={!isMobile ? 100 : 75}
+            thickness={!isMobile ? 15 : 12}
             tooltipDataSource="segment"
             data={[
               { name: "progress", value: progress, color: "green" },

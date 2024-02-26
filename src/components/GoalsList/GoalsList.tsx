@@ -10,7 +10,7 @@ interface IGoalsList {
 const GoalsList = ({ goals, handleDeleteGoal }: IGoalsList) => {
   const isMobile = useMediaQuery(`(max-width: 768px)`);
   return (
-    <ScrollArea h={isMobile ? "520px" : "600px"} m={0} scrollbars="y">
+    <ScrollArea h={isMobile ? "550px" : "600px"} m={0} scrollbars="y">
       <List
         display={"grid"}
         style={{
