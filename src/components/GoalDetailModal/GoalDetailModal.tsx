@@ -40,6 +40,7 @@ const GoalDetailModal = ({
         <Grid.Col span={6}>
           <Box>
             <DonutChart
+              className="detail"
               withLabelsLine
               withLabels
               chartLabel="Practical Progress"

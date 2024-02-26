@@ -49,7 +49,7 @@
     display: none;
   }
 
-  .recharts-responsive-container::after {
+  .detail .recharts-responsive-container::after {
     content: "Practical Progress";
     position: absolute;
     bottom: -20px;
