@@ -44,7 +44,7 @@ const GoalDetailModal = ({
               withLabels
               chartLabel="Practical Progress"
               size={!isMobile ? 200 : 80}
-              thickness={!isMobile ? 15 : 15}
+              thickness={!isMobile ? 15 : 10}
               tooltipDataSource="segment"
               data={[
                 { name: "progress", value: progress, color: "green" },

@@ -34,9 +34,28 @@
   padding: "0 1rem 0 0";
 }
 
+.recharts-responsive-container {
+  min-height: 80px;
+  min-width: 80px;
+  position: relative;
+}
+
 @media screen and (max-width: 900px) {
   .mantine-DonutChart-root {
     width: 90%;
     height: 100%;
+  }
+  .mantine-DonutChart-label {
+    display: none;
+  }
+
+  .recharts-responsive-container::after {
+    content: "Practical Progress";
+    position: absolute;
+    bottom: -20px;
+    left: 0;
+    right: 0;
+    font-size: 12px;
+    font-weight: 600;
   }
 }
