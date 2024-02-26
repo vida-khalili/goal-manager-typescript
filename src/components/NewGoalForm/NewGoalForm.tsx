@@ -128,7 +128,7 @@ const NewGoalForm = ({ handleAddGoal, onClose }: INewGoalFormProps) => {
           max={100}
         />
       </Box>
-      <Button type="submit" fullWidth>
+      <Button type="submit" fullWidth tt={"capitalize"}>
         Add
       </Button>
     </form>

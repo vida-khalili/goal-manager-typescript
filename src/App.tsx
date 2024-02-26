@@ -38,7 +38,7 @@ export default function App() {
     if (storedGoals) {
       setGoals(JSON.parse(storedGoals));
     }
-  }, []);
+  }, [goals]);
 
   const handleAddGoal = ({
     title,
