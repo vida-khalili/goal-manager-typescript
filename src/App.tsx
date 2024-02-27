@@ -7,6 +7,7 @@ import { v4 as uuidv4 } from "uuid";
 import InfoBox from "./components/InfoBox/InfoBox";
 import bgImage from "./assets/bg-coral.jpg";
 import { useMediaQuery } from "@mantine/hooks";
+import Footer from "./components/Footer/Footer";
 
 export interface IGoal {
   id: string;
@@ -133,6 +134,7 @@ export default function App() {
           </InfoBox>
         )}
         <GoalsList goals={goals} handleDeleteGoal={handleDeleteGoal} />
+        <Footer />
       </Box>
     </Box>
   );
